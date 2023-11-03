@@ -141,7 +141,7 @@ openssl s_client -servername mtls.aadianil.awsps.myinstance.com -connect mtls.aa
 ---
 
 # Links that will help
-
+https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/
 https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/
 https://repost.aws/knowledge-center/api-gateway-mutual-tls-403-errors
 https://kumo-knowledge-ui-iad-prod.amazon.com/view/article_22299
