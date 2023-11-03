@@ -12,14 +12,6 @@ Commonly used in OpenBanking solutions, IOT to authenticate devices using digita
 
 ---
 
-
-The client interacts with the server
-The server shows its TLS certificate
-The client validates the certificate of the server
-The client provides the TLS certificate
-The client's certificate is verified by the server
-The server provides access
-The client and server transfer information over an encrypted TLS connection
 ![image](https://github.com/adityapandita97/mTLS/assets/72813685/1b2a7955-ea01-4ecd-923d-5b96290f3df4)
 
 ---
