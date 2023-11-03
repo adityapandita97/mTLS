@@ -48,7 +48,9 @@ Check S3 URL for truststore bundle and also ensure version id is added in case S
 
 Get complete verbose output of the API Call by asking command to make a curl request with –v attribute
 
-Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:
+Verify if issuer of client cert is included in the trust store bundle.
+
+Can be achieved by using the following command:
 
 ```
 openssl x509 -in truststore.pem -text -noout
@@ -59,15 +61,17 @@ openssl x509 -in truststore.pem -text -noout
 
 Access denied. Reason: Could not find issuer for certificate" errors
 
-Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:
+Verify if issuer of client cert is included in the trust store bundle.
+
+Can be achieved by using the following command:
 ```
 openssl verify -CAfile truststore.pem my_client.pem
 ```
-If certificate has multiple intermediate CAs, use the following command:
+If certificate has multiple intermediate CAs, use the following command:
 ```
 openssl verify -CAfile truststore.pem -untrusted intCA.pem my_client.pem
 ```
-Verify if all clients certificates in the truststore are valid by using the following command:
+Verify if all clients certificates in the truststore are valid by using the following command:
 ```
 openssl x509 -in truststore.pem -text -noout
 ```
@@ -80,9 +84,13 @@ Access denied. Reason: Client cert using an insecure Signature Algorithm
 
 Verify if the truststore file uses only a supported hashing algorithms
 
-API Gateway supports the following algorithms:-> SHA-256 or stronger-> RSA-2048 or stronger-> ECDSA-256 or stronger
+API Gateway supports the following algorithms:
 
-Check the current algorithm used by truststore bundle file by using the following command:
+->SHA-256 or stronger
+->RSA-2048 or stronger
+->ECDSA-256 or stronger
+
+Check the current algorithm used by truststore bundle file by using the following command:
 
 ```
 openssl x509 -in truststore.pem -text -noout | grep 'Signature Algorithm'
@@ -96,7 +104,7 @@ Access denied. Reason: self signed certificate" errors
 
 Verify if the modulus of all files (my_client.key, my_client.csr & my_client.pem)
 
-To compare the modulus for each, use the following commands:
+To compare the modulus for each, use the following commands:
 
 ```
 openssl rsa -noout -modulus -in my_client.key | openssl md5openssl req -noout -modulus -in my_client.csr | openssl md5openssl x509 -noout -modulus -in my_client.pem | openssl md5
