@@ -27,7 +27,7 @@ The client and server transfer information over an encrypted TLS connection.
 
 ---
 
-Setting up mTLS on API Gateway
+# Setting up mTLS on API Gateway
 
 https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/
 
@@ -40,7 +40,7 @@ my_client.pem (client certificate public key)
 
 ---
 
-Troubleshooting Steps
+# Troubleshooting Steps
 
 Check if mTLS is correctly setup on APIGW
 Check S3 URL for truststore bundle and also ensure version id is added in case S3 has bucket versioning enabled
@@ -49,7 +49,7 @@ Verify if issuer of client cert is included in the trust store bundle.Can be ac
 
 ---
 
-Troubleshooting Steps Server Side
+# Troubleshooting Steps Server Side
 
 Access denied. Reason: Could not find issuer for certificate" errors
 Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:openssl verify -CAfile truststore.pem my_client.pem
@@ -60,7 +60,7 @@ Verify if all clients certificates in the truststore are valid by using the foll
 
 ---
 
-Troubleshooting Steps Server Side
+# Troubleshooting Steps Server Side
 
 Access denied. Reason: Client cert using an insecure Signature Algorithm
 Verify if the truststore file uses only a supported hashing algorithms
@@ -69,7 +69,7 @@ Check the current algorithm used by truststore bundle file by using the followin
 
 ---
 
-Troubleshooting Steps Server Side
+# Troubleshooting Steps Server Side
 
 Access denied. Reason: self signed certificate" errors
 Verify if the modulus of all files (my_client.key, my_client.csr & my_client.pem)
@@ -77,7 +77,7 @@ To compare the modulus for each, use the following commands:openssl rsa -noout
 
 ---
 
-Troubleshooting Steps Client Side
+# Troubleshooting Steps Client Side
 
 Missing certificate or private key not passed correctly in the API Call
 Incorrect certificate or private key used
@@ -85,7 +85,7 @@ Incorrect file extension used, for eg .crt used but the file has the format .pem
 
 ---
 
-Ownership Certificate
+# Ownership Certificate
 
 When using a private/imported certificate from ACM or AWS Private Certificate Authority, while enabling mTLS, you also have to provide Ownership Certificate issued by ACM
 This certificate is not used ANYWHERE during the mTLS Handshake
@@ -93,7 +93,7 @@ This is needed just to verify that you have the permissions to use the domain wi
 
 ---
 
-Points to Remember
+# Points to Remember
 
 API Gateway does not verify if the certificate has been revoked or expired
 If you have setup lambda auth with your api, the client certs get passed automatically only in 2 case:
@@ -113,7 +113,7 @@ This is due to API gateway only allowing certificates for a domain from one issu
 
 ---
 
-Unrelated to mTLS
+# Unrelated to mTLS
 
 Customers often get confused when enabling mTLS and thinking the certificate on domain should also have the same CN
 When making a curl request for a mTLS custom domain with ACM issued Certificate, you would see the Common Name or the chain as *.execute-api.amazonaws.com
@@ -124,7 +124,7 @@ openssl s_client -servername mtls.aadianil.awsps.myinstance.com -connect mtls.aa
 
 ---
 
-Links that will help
+# Links that will help
 
 https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/
 https://repost.aws/knowledge-center/api-gateway-mutual-tls-403-errors
