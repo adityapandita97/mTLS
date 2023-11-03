@@ -1,5 +1,5 @@
 # mTLS
-This is a repo for the mTLS related troubleshooting and details
+This is a repo for the mTLS related troubleshooting and details.
 
 It’s a mutual authentication mechanism where both parties that are connected are actually who they claim to be and not an imposter.
 
