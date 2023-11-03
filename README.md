@@ -45,18 +45,28 @@ my_client.pem (client certificate public key)
 Check if mTLS is correctly setup on APIGW
 Check S3 URL for truststore bundle and also ensure version id is added in case S3 has bucket versioning enabled
 Get complete verbose output of the API Call by asking command to make a curl request with –v attribute
-Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:```openssl x509 -in truststore.pem -text -noout```
-
+Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:
+```json
+openssl x509 -in truststore.pem -text -noout
+```
 ---
 
 # Troubleshooting Steps Server Side
 
 Access denied. Reason: Could not find issuer for certificate" errors
-Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:openssl verify -CAfile truststore.pem my_client.pem
 
-If certificate has multiple intermediate CAs, use the following command:openssl verify -CAfile truststore.pem -untrusted intCA.pem my_client.pem
-
-Verify if all clients certificates in the truststore are valid by using the following command:openssl x509 -in truststore.pem -text -noout
+Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:
+```json
+openssl verify -CAfile truststore.pem my_client.pem
+```
+If certificate has multiple intermediate CAs, use the following command:
+```json
+openssl verify -CAfile truststore.pem -untrusted intCA.pem my_client.pem
+```
+Verify if all clients certificates in the truststore are valid by using the following command:
+```json
+openssl x509 -in truststore.pem -text -noout
+```
 
 ---
 
@@ -65,7 +75,10 @@ Verify if all clients certificates in the truststore are valid by using the foll
 Access denied. Reason: Client cert using an insecure Signature Algorithm
 Verify if the truststore file uses only a supported hashing algorithms
 API Gateway supports the following algorithms:-> SHA-256 or stronger-> RSA-2048 or stronger-> ECDSA-256 or stronger
-Check the current algorithm used by truststore bundle file by using the following command:openssl x509 -in truststore.pem -text -noout | grep 'Signature Algorithm'!
+Check the current algorithm used by truststore bundle file by using the following command:
+```json
+openssl x509 -in truststore.pem -text -noout | grep 'Signature Algorithm'!
+```
 
 ---
 
@@ -73,7 +86,10 @@ Check the current algorithm used by truststore bundle file by using the followin
 
 Access denied. Reason: self signed certificate" errors
 Verify if the modulus of all files (my_client.key, my_client.csr & my_client.pem)
-To compare the modulus for each, use the following commands:openssl rsa -noout -modulus -in my_client.key | openssl md5openssl req -noout -modulus -in my_client.csr | openssl md5openssl x509 -noout -modulus -in my_client.pem | openssl md5
+To compare the modulus for each, use the following commands:
+```json
+openssl rsa -noout -modulus -in my_client.key | openssl md5openssl req -noout -modulus -in my_client.csr | openssl md5openssl x509 -noout -modulus -in my_client.pem | openssl md5
+```
 
 ---
 
@@ -100,7 +116,7 @@ If you have setup lambda auth with your api, the client certs get passed automat
 apigw passes the client cert to the lambda, if the lambda auth is Request based not the Token based.
 apigw passes the client cert to the backend integration, if the integration is proxy
 - Apigw doesn’t check for client cert revocation but you can do that inside a lambda auth, more info can get here.
-To use mTLS, you must use a Regional Custom Domain with a minimum tls version of 1.2 [1]
+To use mTLS, you must use a Regional Custom Domain with a minimum tls version of 1.2
 Certificates must be issued from a single issuer only. For each subject in the certificate, there can only be one issuer in API Gateway for mutual TLS domains
 
 ---
