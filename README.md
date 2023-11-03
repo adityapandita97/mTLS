@@ -45,7 +45,7 @@ my_client.pem (client certificate public key)
 Check if mTLS is correctly setup on APIGW
 Check S3 URL for truststore bundle and also ensure version id is added in case S3 has bucket versioning enabled
 Get complete verbose output of the API Call by asking command to make a curl request with –v attribute
-Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:openssl x509 -in truststore.pem -text -noout
+Verify if issuer of client cert is included in the trust store bundle.Can be achieved by using the following command:```openssl x509 -in truststore.pem -text -noout```
 
 ---
 
