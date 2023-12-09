@@ -174,9 +174,7 @@ However, with the use of openssl, Customers make the following command to check 
 openssl s_client -connect mtls.aadianil.awsps.myinstance.com:443 –showcerts
 ```
 
-The above also shows the same *.execute-api.eu-west-1.amazonaws.com chain
-
-This is because openssl s_client does not send the Server Name Indication by default and it has to be passed to get the correct results
+The above also shows the same *.execute-api.eu-west-1.amazonaws.com chain. This is because openssl s_client does not send the Server Name Indication by default and it has to be passed to get the correct results
 
 ```
 openssl s_client -servername mtls.aadianil.awsps.myinstance.com -connect mtls.aadianil.awsps.myinstance.com:443 -showcerts
