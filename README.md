@@ -166,7 +166,7 @@ This is due to API gateway only allowing certificates for a domain from one issu
 
 Customers often get confused when enabling mTLS and thinking the certificate on domain should also have the same CN
 
-When making a curl request for a mTLS custom domain with ACM issued Certificate, you would see the Common Name or the chain as *.execute-api.amazonaws.com
+When making a curl request for a mTLS custom domain with ACM issued Certificate, you would see the Common Name or the chain as *.execute-api.amazonaws.com
 
 However, with the use of openssl, Customers make the following command to check the certificate chain:
 
